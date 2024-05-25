@@ -1,6 +1,6 @@
 import { IsString } from "class-validator";
 
-export class AddLeafDto {
+export class LeafDto {
     @IsString()
     name: string;
 

@@ -5,12 +5,13 @@ export class MetalPrices {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ type: "varchar", length: 255 })
   type: string;
 
-  @Column()
+  @Column({ type: "int" })
   rating: number;
 
-  @Column()
-  sample: number
+  @Column({ type: "int" })
+  sample: number;
+  
 }

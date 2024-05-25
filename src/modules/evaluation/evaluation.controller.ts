@@ -5,7 +5,7 @@ export class EvaluationController {
 
     @Get("state")
     async getState() {
-
+        
     }
 
     @Post("request")

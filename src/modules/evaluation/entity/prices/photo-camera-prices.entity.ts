@@ -5,13 +5,13 @@ export class PhotoCameraPrices {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ type: "varchar", length: 200 })
   name: string;
 
-  @Column()
+  @Column({ type: "decimal", width: 10.2 })
   price: number;
 
-  @Column()
+  @Column({ type: "varchar", length: 150 })
   type: string;
 
 }

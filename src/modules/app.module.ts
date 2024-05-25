@@ -1,10 +1,14 @@
 import { Module } from "@nestjs/common";
 import { PricesModule } from "./evaluation/evaluation.module";
-import { ObjectModule } from './object/object.module';
+import { GoodsModule } from './goods/goods.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { ConfigModule, ConfigService } from "@nestjs/config";
+import { LotsModule } from './lots/lots.module';
+import { ProductsModule } from './products/products.module';
+import { ContractsModule } from './contracts/contracts.module';
+import { LeafModule } from './leaf/leaf.module';
 
 import configurations from "../configurations"
 
@@ -27,10 +31,14 @@ import configurations from "../configurations"
                         }),
                         inject: [ConfigService]
                 }),
-                ObjectModule,
+                GoodsModule,
                 PricesModule,
                 UserModule,
-                AuthModule
+                AuthModule,
+                LotsModule,
+                ProductsModule,
+                ContractsModule,
+                LeafModule
         ]
 })
 export class AppModule { }

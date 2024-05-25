@@ -1,13 +1,9 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { AddLeafDto } from './dto/add-leaf.dto';
+import { Controller, Get } from '@nestjs/common';
 
 @Controller('user')
 export class UserController {
 
-    @Post("add_leaf")
-    async addLeaf(@Body() dto: AddLeafDto) {
-
-    }
+    
 
     @Get("bids")
     async getBids() {

@@ -2,14 +2,14 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { MetalPrices } from './entity/metal-prices.entity';
-import { MonitorPrices } from './entity/monitor-prices.entity';
-import { LaptopPrices } from "./entity/laptop-prices.entity";
-import { PhonePrices } from "./entity/phone-prices.entity";
-import { PhotoCameraPrices } from "./entity/photo-camera-prices.entity";
-import { TabletsPrices } from "./entity/tablets-prices.entity";
-import { TvPrices } from "./entity/tv-prices.entity";
-import { VideoCameraPrices } from "./entity/video-camera-prices.entity";
+import { MetalPrices } from './entity/prices/metal-prices.entity';
+import { MonitorPrices } from './entity/prices/monitor-prices.entity';
+import { LaptopPrices } from "./entity/prices/laptop-prices.entity";
+import { PhonePrices } from "./entity/prices/phone-prices.entity";
+import { PhotoCameraPrices } from "./entity/prices/photo-camera-prices.entity";
+import { TabletsPrices } from "./entity/prices/tablets-prices.entity";
+import { TvPrices } from "./entity/prices/tv-prices.entity";
+import { VideoCameraPrices } from "./entity/prices/video-camera-prices.entity";
 
 @Injectable()
 export class PricesService {
