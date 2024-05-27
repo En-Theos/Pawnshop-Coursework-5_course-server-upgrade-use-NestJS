@@ -9,24 +9,29 @@ import { LotsModule } from './lots/lots.module';
 import { ProductsModule } from './products/products.module';
 import { ContractsModule } from './contracts/contracts.module';
 import { LeafModule } from './leaf/leaf.module';
+import { MailModule } from './mail/mail.module';
+import { TokenModule } from './token/token.module';
 
-import configurations from "../configurations"
+import DBConfig from "../configurations/data-base.config";
+import MailerConfig from "../configurations/mailer.config";
+import ServerConfig from "../configurations/server.config";
+import JWTConfig from "../configurations/jwt.config";
 
 @Module({
         imports: [
                 ConfigModule.forRoot({
                         isGlobal: true,
-                        load: [configurations]
+                        load: [DBConfig, MailerConfig, ServerConfig, JWTConfig]
                 }),
                 TypeOrmModule.forRootAsync({
                         imports: [ConfigModule],
                         useFactory: (configService: ConfigService) => ({
                                 type: 'mysql',
-                                host: configService.get('db_host'),
-                                port: +configService.get('db_port'),
-                                username: configService.get('db_user'),
-                                password: configService.get('db_password'),
-                                database: configService.get('db_name'),
+                                host: configService.get<string>('db_host'),
+                                port: configService.get<number>('db_port'),
+                                username: configService.get<string>('db_user'),
+                                password: configService.get<string>('db_password'),
+                                database: configService.get<string>('db_name'),
                                 autoLoadEntities: true
                         }),
                         inject: [ConfigService]
@@ -38,7 +43,9 @@ import configurations from "../configurations"
                 LotsModule,
                 ProductsModule,
                 ContractsModule,
-                LeafModule
+                LeafModule,
+                MailModule,
+                TokenModule
         ]
 })
 export class AppModule { }

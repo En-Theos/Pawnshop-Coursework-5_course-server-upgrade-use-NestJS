@@ -15,28 +15,28 @@ import { VideoCameraPrices } from "./entity/prices/video-camera-prices.entity";
 export class PricesService {
     constructor(
         @InjectRepository(MetalPrices)
-        private metalPricesRepository: Repository<MetalPrices>,
+        private readonly metalPricesRepository: Repository<MetalPrices>,
 
         @InjectRepository(MonitorPrices)
-        private monitorPricesRepository: Repository<MonitorPrices>,
+        private readonly monitorPricesRepository: Repository<MonitorPrices>,
 
         @InjectRepository(LaptopPrices)
-        private laptopPricesRepository: Repository<LaptopPrices>,
+        private readonly laptopPricesRepository: Repository<LaptopPrices>,
 
         @InjectRepository(PhonePrices)
-        private phonePricesRepository: Repository<PhonePrices>,
+        private readonly phonePricesRepository: Repository<PhonePrices>,
 
         @InjectRepository(PhotoCameraPrices)
-        private photoCameraPricesRepository: Repository<PhotoCameraPrices>,
+        private readonly photoCameraPricesRepository: Repository<PhotoCameraPrices>,
 
         @InjectRepository(TabletsPrices)
-        private tabletsPricesRepository: Repository<TabletsPrices>,
+        private readonly tabletsPricesRepository: Repository<TabletsPrices>,
 
         @InjectRepository(TvPrices)
-        private tvPricesRepository: Repository<TvPrices>,
+        private readonly tvPricesRepository: Repository<TvPrices>,
 
         @InjectRepository(VideoCameraPrices)
-        private videoCameraPricesRepository: Repository<VideoCameraPrices>
+        private readonly videoCameraPricesRepository: Repository<VideoCameraPrices>
     ) {}
 
     getMetalPrices () {
