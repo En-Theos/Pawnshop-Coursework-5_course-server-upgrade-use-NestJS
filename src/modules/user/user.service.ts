@@ -8,15 +8,15 @@ import { Repository } from "typeorm";
 export class UserService {
     constructor(
         @InjectRepository(Users)
-        private readonly users: Repository<Users>
+        private readonly usersRepository: Repository<Users>
     ) { }
 
-    findUser(dto: Partial<Users>): Promise<Users> {
-        return this.users.findOneBy(dto)
+    findUser(where: Partial<Users>): Promise<Users> {
+        return this.usersRepository.findOneBy(where)
     }
 
     async createUser(dto: Pick<Users, "name" | "email" | "password" | "activationLink">): Promise<Pick<Users, "id" | "name" | "email" | "isActivated">> {
-        const newUser = await this.users.save(dto);
+        const newUser = await this.usersRepository.save(dto);
 
         return {
             id: newUser.id,
@@ -27,7 +27,7 @@ export class UserService {
     }
 
     async updateUser(where: Partial<Users>, dto: Partial<Omit<Users, "id">>): Promise<boolean> {
-        const updateResult = await this.users.update(where, dto);
+        const updateResult = await this.usersRepository.update(where, dto);
 
         return !!updateResult.affected
     }

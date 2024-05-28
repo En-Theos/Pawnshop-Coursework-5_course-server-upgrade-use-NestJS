@@ -1,5 +1,6 @@
 import { Bids } from "src/modules/lots/entity/bids.entity";
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, JoinColumn } from "typeorm";
+import { State as StateEntity } from "src/modules/evaluation/entity/state.entity";
 
 export enum State {
   EXCELLENT = "Відмінний",
@@ -34,7 +35,8 @@ export class GoodsForSale {
   @Column({ type: "json", nullable: true })
   characteristics: string;
 
-  @Column({ type: "enum", enum: State })
+  @ManyToOne(() => StateEntity, (stateEntity) => stateEntity.state)
+  @JoinColumn({ name: "state" })
   state: State;
 
   @Column({ type: "varchar", length: 200 })

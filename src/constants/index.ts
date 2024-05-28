@@ -1,0 +1,1 @@
+export const INCORRECT_INPUT_DATA = "Неправильні вхідні дані";

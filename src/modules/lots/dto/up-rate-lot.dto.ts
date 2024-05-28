@@ -1,8 +1,8 @@
 import { IsNumber, IsString } from "class-validator";
 
 export class UpRateLotDto {
-    @IsString()
-    id: string;
+    @IsNumber()
+    goodsForSaleId: number;
 
     @IsNumber()
     rate: number;
