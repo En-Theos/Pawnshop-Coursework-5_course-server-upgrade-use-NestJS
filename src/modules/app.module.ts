@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { PricesModule } from "./evaluation/evaluation.module";
+import { EvaluationModule } from "./evaluation/evaluation.module";
 import { GoodsModule } from './goods/goods.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
@@ -37,7 +37,7 @@ import JWTConfig from "../configurations/jwt.config";
                         inject: [ConfigService]
                 }),
                 GoodsModule,
-                PricesModule,
+                EvaluationModule,
                 UserModule,
                 AuthModule,
                 LotsModule,

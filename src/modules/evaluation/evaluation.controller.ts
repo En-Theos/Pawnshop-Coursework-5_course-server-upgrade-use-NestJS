@@ -1,16 +1,21 @@
 import { Controller, Get, Post } from '@nestjs/common';
+import { EvaluationService } from './evaluation.service';
 
 @Controller('evaluation')
 export class EvaluationController {
 
+    constructor (
+        private readonly evaluationService: EvaluationService
+    ) {}
+
     @Get("state")
-    async getState() {
-        
+    getState() {
+        return this.evaluationService.getState()
     }
 
     @Post("request")
-    async newRequest() {
-        
+    async addRequest() {
+        return this.evaluationService.addRequest()
     }
     
 }

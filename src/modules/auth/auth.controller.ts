@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Get, Param, Post, Redirect, Req, Res } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, HttpCode, Param, Post, Redirect, Req, Res } from '@nestjs/common';
 import { RegistrationDto } from './dto/registration';
 import { LoginDto } from './dto/login';
 import { AuthService } from './auth.service';
@@ -38,6 +38,7 @@ export class AuthController {
         }
     }
 
+    @HttpCode(200)
     @Post("logout")
     async logout(@Req() request: Request, @Res({ passthrough: true }) response: Response): Promise<LogoutResponse> {
         const refreshToken = request.cookies["refreshToken"];

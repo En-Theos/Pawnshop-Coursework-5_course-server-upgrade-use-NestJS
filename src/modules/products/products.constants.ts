@@ -1,0 +1,1 @@
+export const ALREADY_PURCHASED = "Цей товар уже куплено";
