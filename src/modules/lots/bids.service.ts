@@ -17,7 +17,18 @@ export class BidsService {
 
 
     getAllBy(where: Partial<Bids>) {
-        return this.bidsRepository.findBy(where)
+        return this.dataSource
+            .createQueryBuilder()
+            .from(Bids, "bids")
+            .leftJoinAndSelect("bids.goodsForSaleId", "goods")
+            .select([
+                "bids.rate as rate",
+                "goods.name as name",
+                "goods.market_price as market_price",
+                "goods.picture as picture"
+            ])
+            .where(where)
+            .getRawMany()
     }
 
     async upBids(dto: UpRateLotDto) {

@@ -41,7 +41,7 @@ export class AuthService {
         await this.mailService.sendActivationMail(dto.email,
             this.configService.get<string>("server_domain") +
             this.configService.get<string>("server_port") +
-            "/auth/activate" +
+            "/auth/activate/" +
             activationLink
         )
 

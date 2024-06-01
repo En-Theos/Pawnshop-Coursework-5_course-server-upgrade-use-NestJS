@@ -17,7 +17,18 @@ export class OrdersService {
     ) { }
 
     getAllBy(where: Partial<PurchaseOrders>) {
-        return this.purchaseOrdersRepository.findBy(where)
+        return this.dataSource
+            .createQueryBuilder()
+            .from(PurchaseOrders, "orders")
+            .leftJoinAndSelect("orders.id_product", "goods")
+            .select([
+                "goods.name as name",
+                "goods.market_price as market_price",
+                "goods.picture as picture",
+                "goods.description as description"
+            ])
+            .where(where)
+            .getRawMany()
     }
 
     async buyProduct(dto: BuyProductDto) {
@@ -38,7 +49,7 @@ export class OrdersService {
             await queryRunner.manager.insert("purchase_orders", {
                 name_customer: dto.name_customer,
                 email: dto.email,
-                name_product: dto.name_product
+                id_product: dto.goodsForSaleId
             });
 
             await queryRunner.commitTransaction();

@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { GoodsForSale } from "src/modules/goods/entity/goods-for-sale.entity";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class PurchaseOrders {
@@ -11,7 +12,8 @@ export class PurchaseOrders {
     @Column({ type: "text" })
     email: string;
 
-    @Column({ type: "text" })
-    name_product: string;
+    @ManyToOne(() => GoodsForSale, (goodsForSale) => goodsForSale.id)
+    @JoinColumn({ name: "id_product" })
+    id_product: number;
 
 }

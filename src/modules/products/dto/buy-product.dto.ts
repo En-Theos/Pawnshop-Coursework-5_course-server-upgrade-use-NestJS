@@ -10,7 +10,4 @@ export class BuyProductDto {
 
     @IsString()
     email: string;
-
-    @IsString()
-    name_product: string;
 }
