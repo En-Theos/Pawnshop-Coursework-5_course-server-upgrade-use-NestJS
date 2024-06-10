@@ -7,7 +7,6 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { LotsModule } from './lots/lots.module';
 import { ProductsModule } from './products/products.module';
-import { ContractsModule } from './contracts/contracts.module';
 import { LeafModule } from './leaf/leaf.module';
 import { MailModule } from './mail/mail.module';
 import { TokenModule } from './token/token.module';
@@ -47,7 +46,6 @@ import { join } from 'path';
                 AuthModule,
                 LotsModule,
                 ProductsModule,
-                ContractsModule,
                 LeafModule,
                 MailModule,
                 TokenModule
